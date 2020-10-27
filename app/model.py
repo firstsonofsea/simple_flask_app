@@ -16,9 +16,9 @@ class Quest(db.Model):
 
 
 class Otziv(db.Model):
-    id  = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(1024))
     name = db.Column(db.String(64))
-    name_pdf = db.Column(db.Strint(64))
-    name_img = db.Column(db.Strint(64))
+    name_pdf = db.Column(db.String(64))
+    name_img = db.Column(db.String(64))
     type_otz = db.Column(db.Boolean)

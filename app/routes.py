@@ -5,7 +5,7 @@ from flask import request
 from flask import jsonify
 
 
-def send_mail(subj, text = None, phone = None, email = None, type, name):
+def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
     """
     :param subj: тема письма
     :param text: текст письма
@@ -15,7 +15,7 @@ def send_mail(subj, text = None, phone = None, email = None, type, name):
     :param name: имя к кому обращаться
     :return:
     """
-    if type == 1:
+    if type_mes == 1:
         if email:
             text = """Новая заявка на обратную связь от {2}
             Номер телефона - {0};
@@ -56,7 +56,7 @@ def new():
 def new_quest():
     try:
         r = request.json
-        new_info = Quest(name = r['name'], email = r['email'], text = r['text'])
+        new_info = Quest(name=r['name'], email=r['email'], text=r['text'])
         db.session.add(new_info)
         db.session.commit()
         send_mail(subj="Новый вопрос",
@@ -72,34 +72,34 @@ def new_quest():
 
 @app.route('/api/otzivi', methods=['POST'])
 def otz():
-    type = request.json['type']
-    if type == 'all':
+    type_otz = request.json['type']
+    if type_otz == 'all':
         otz = Otziv.query.all()
-    if type == 'people':
+    if type_otz == 'people':
         otz = Otziv.query.filter_by(type_otz=False).all()
-    if type == 'company':
+    if type_otz == 'company':
         otz = Otziv.query.filter_by(type_otz=False).all()
     otvet = []
     for i in otz:
         otvet.append({
             'name':i['name'],
             'text':i['text'],
-            'file':i['name_pdf']
+            'file':i['name_pdf'],
             'img':i['name_img']
         })
         return jsonify({"result": otvet})
 
 
 @app.route('/api/izm_otzivi', methods=['POST'])
-def otz():
+def otz_izm():
     try:
         r = request.json
-        if r['type']=='DELETE':
+        if r['type'] == 'DELETE':
             otz = Otziv.query.filter_by(name=r['name'])
             db.session.delete(otz)
             db.session.commit()
-        if r['type']=='INSERT':
-            otz = Otziv(name=r['name'], text = r['text'], name_pdf=r['pdf'], name_img=r['img'])
+        if r['type'] == 'INSERT':
+            otz = Otziv(name=r['name'], text=r['text'], name_pdf=r['pdf'], name_img=r['img'])
             db.session.add(otz)
             db.session.commit()
         return jsonify({"status": "OK"})
