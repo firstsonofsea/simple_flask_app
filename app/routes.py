@@ -41,9 +41,9 @@ def new():
     try:
         r = request.json
         if r['email']:
-            new_info = Info(name = r['name'], phone = r['phone'], email = r['email'])
+            new_info = Info(name=r['name'], phone=r['phone'], email=r['email'])
         else:
-            new_info = Info(name = r['name'], phone = r['phone'])
+            new_info = Info(name=r['name'], phone=r['phone'])
         db.session.add(new_info)
         db.session.commit()
         send_mail(subj="Новая заявка",
@@ -83,7 +83,7 @@ def otz():
     if type_otz == 'people':
         otz = Otziv.query.filter_by(type_otz=False).all()
     if type_otz == 'company':
-        otz = Otziv.query.filter_by(type_otz=False).all()
+        otz = Otziv.query.filter_by(type_otz=True).all()
     otvet = []
     for i in otz:
         otvet.append({
@@ -104,7 +104,9 @@ def otz_izm():
             db.session.delete(otz)
             db.session.commit()
         if r['type'] == 'INSERT':
-            otz = Otziv(name=r['name'], text=r['text'], name_pdf=r['pdf'], name_img=r['img'])
+            otz = Otziv(name=r['name'], text=r['text'],
+                        name_pdf=r['pdf'], name_img=r['img'],
+                        type_otz=r['type_otz'])
             db.session.add(otz)
             db.session.commit()
         return jsonify({"status": "OK"})
