@@ -7,3 +7,9 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
                               'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USERNAME = 'rights.defender.krd23@gmail.com'  # введите свой адрес электронной почты здесь
+    MAIL_DEFAULT_SENDER = 'rights.defender.krd23@gmail.com'  # и здесь
+    MAIL_PASSWORD = 'ghfdjpfobnybr93'  # введите пароль

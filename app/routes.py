@@ -1,8 +1,10 @@
 from app import app
 from app import db
 from app.model import Info, Quest, Otziv
+from app import mail
 from flask import request
 from flask import jsonify
+from flask_mail import Message
 
 
 def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
@@ -28,6 +30,9 @@ def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
         text = """Новый вопрос от {0}:
             "{1}"
             Email - {2}""".format(name, text, email)
+    msg = Message(subj, recipients=['firstsonofsea@yandex.ru'])
+    msg.body = text
+    mail.send(msg)
     pass
 
 
