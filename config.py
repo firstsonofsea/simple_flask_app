@@ -10,6 +10,7 @@ class Config(object):
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = 'rights.defender.krd23@gmail.com'  # введите свой адрес электронной почты здесь
-    MAIL_DEFAULT_SENDER = 'rights.defender.krd23@gmail.com'  # и здесь
-    MAIL_PASSWORD = 'ghfdjpfobnybr93'  # введите пароль
+    MAIL_USE_SSL = False
+    MAIL_USERNAME = 'rights.defender.krd23@gmail.com'
+    MAIL_DEFAULT_SENDER = 'rights.defender.krd23@gmail.com'
+    MAIL_PASSWORD = 'ghfdjpfobnybr93'

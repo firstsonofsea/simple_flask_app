@@ -33,7 +33,7 @@ def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
     msg = Message(subj, recipients=['firstsonofsea@yandex.ru'])
     msg.body = text
     mail.send(msg)
-    pass
+    return True
 
 
 @app.route('/', methods=['GET'])
