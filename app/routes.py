@@ -100,6 +100,7 @@ def otz():
 def otz_izm():
     try:
         r = request.json
+        print(r)
         if r['type_com'] == 'DELETE':
             otz = Otziv.query.filter_by(name=r['name'])
             db.session.delete(otz)
@@ -112,5 +113,6 @@ def otz_izm():
             db.session.commit()
         return jsonify({"status": "OK"})
     except Exception as e:
+        print(e)
         return jsonify({"status": "error",
                         "error": str(e)})
