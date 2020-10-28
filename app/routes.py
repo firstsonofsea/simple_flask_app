@@ -52,6 +52,7 @@ def new():
             new_info = Info(name=r['name'], phone=r['phone'])
         db.session.add(new_info)
         db.session.commit()
+        print(1)
         send_mail(subj="Новая заявка",
                   phone=r['phone'],
                   email=r['email'],
@@ -59,6 +60,7 @@ def new():
                   name=r['name'])
         return jsonify({"status": "OK"})
     except Exception as e:
+        print(e)
         return jsonify({"status": "error",
                         "error": str(e)})
 
