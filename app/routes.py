@@ -102,7 +102,7 @@ def otz_izm():
         r = request.json
         print(r)
         if r['type_com'] == 'DELETE':
-            otz = Otziv.query.filter_by(name=r['name'])
+            otz = Otziv.query.filter_by(name=r['name']).first()
             db.session.delete(otz)
             db.session.commit()
         if r['type_com'] == 'INSERT':
