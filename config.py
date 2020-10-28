@@ -9,7 +9,7 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = 'smtp.googlemail.com'
     MAIL_PORT = 465
-    MAIL_USE_TLS = True
+    MAIL_USE_TLS = False
     MAIL_USE_SSL = True
     MAIL_USERNAME = 'mihailsiuhin98798@gmail.com'
     MAIL_DEFAULT_SENDER = 'mihailsiuhin98798@gmail.com'
