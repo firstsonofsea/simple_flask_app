@@ -78,7 +78,7 @@ def new_quest():
 @app.route('/api/otzivi', methods=['POST'])
 def otz():
     r = request.json
-    type_otz = r['type']
+    type_otz = r['type_otz']
     if type_otz == 'all':
         otz = Otziv.query.all()
     if type_otz == 'people':
@@ -93,7 +93,7 @@ def otz():
             'file': i['name_pdf'],
             'img': i['name_img']
         })
-        return jsonify({"result": otvet})
+    return jsonify({"result": otvet})
 
 
 @app.route('/api/izm_otzivi', methods=['POST'])
