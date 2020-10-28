@@ -49,7 +49,7 @@ def new():
         send_mail(subj="Новая заявка",
                   phone=r['phone'],
                   email=r['email'],
-                  type=1,
+                  type_mes=1,
                   name=r['name'])
         return jsonify({"status": "OK"})
     except Exception as e:
@@ -67,7 +67,7 @@ def new_quest():
         send_mail(subj="Новый вопрос",
                   text=r['text'],
                   email=r['email'],
-                  type=2,
+                  type_mes=2,
                   name=r['name'])
         return jsonify({"status": "OK"})
     except Exception as e:
