@@ -7,10 +7,10 @@ class Config(object):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
                               'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    MAIL_SERVER = 'smtp.googlemail.com'
+    MAIL_SERVER = 'smtp.jino.ru'
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USE_SSL = False
-    MAIL_USERNAME = 'mihailsiuhin98798@gmail.com'
-    MAIL_DEFAULT_SENDER = 'mihailsiuhin98798@gmail.com'
-    MAIL_PASSWORD = 'igroman000'
+    MAIL_USERNAME = 'info@pravo-z.ru'
+    MAIL_DEFAULT_SENDER = 'info@pravo-z.ru'
+    MAIL_PASSWORD = 'Bagration6915831'
