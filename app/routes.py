@@ -107,7 +107,7 @@ def otz_izm():
             db.session.commit()
         if r['type_com'] == 'INSERT':
             otz = Otziv(name=r['name'], text=r['text'],
-                        name_pdf=r['pdf'], name_img=r['img'],
+                        name_pdf=r['name_pdf'], name_img=r['name_img'],
                         type_otz=r['type_otz'])
             db.session.add(otz)
             db.session.commit()
