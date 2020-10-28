@@ -31,6 +31,11 @@ def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
     pass
 
 
+@app.route('/', methods=['GET'])
+def qwe():
+    return "hello"
+
+
 @app.route('/api/new', methods=['POST'])
 def new():
     try:
@@ -82,10 +87,10 @@ def otz():
     otvet = []
     for i in otz:
         otvet.append({
-            'name':i['name'],
-            'text':i['text'],
-            'file':i['name_pdf'],
-            'img':i['name_img']
+            'name': i['name'],
+            'text': i['text'],
+            'file': i['name_pdf'],
+            'img': i['name_img']
         })
         return jsonify({"result": otvet})
 
