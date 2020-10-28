@@ -33,7 +33,6 @@ def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
     msg = Message(subj, sender='rights.defender.krd23@gmail.com', recipients=['firstsonofsea@yandex.ru'])
     msg.body = text
     mail.send(msg)
-    print('OK')
     return True
 
 
@@ -52,7 +51,6 @@ def new():
             new_info = Info(name=r['name'], phone=r['phone'])
         db.session.add(new_info)
         db.session.commit()
-        print(1)
         send_mail(subj="Новая заявка",
                   phone=r['phone'],
                   email=r['email'],

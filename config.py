@@ -11,6 +11,6 @@ class Config(object):
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USE_SSL = False
-    MAIL_USERNAME = 'rights.defender.krd23@gmail.com'
-    MAIL_DEFAULT_SENDER = 'rights.defender.krd23@gmail.com'
-    MAIL_PASSWORD = 'ghfdjpfobnybr'
+    MAIL_USERNAME = 'mihailsiuhin98798@gmail.com'
+    MAIL_DEFAULT_SENDER = 'mihailsiuhin98798@gmail.com'
+    MAIL_PASSWORD = 'igroman000'
