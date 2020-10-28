@@ -30,7 +30,7 @@ def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
         text = """Новый вопрос от {0}:
             "{1}"
             Email - {2}""".format(name, text, email)
-    msg = Message(subj, sender='rights.defender.krd23@gmail.com', recipients=['firstsonofsea@yandex.ru'])
+    msg = Message(subj, sender='rights.defender.krd23@gmail.com', recipients=['bagration1998@gmail.com'])
     msg.body = text
     mail.send(msg)
     return True

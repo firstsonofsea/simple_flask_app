@@ -8,9 +8,9 @@ class Config(object):
                               'sqlite:///' + os.path.join(basedir, 'app.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = 'smtp.googlemail.com'
-    MAIL_PORT = 465
-    MAIL_USE_TLS = False
-    MAIL_USE_SSL = True
+    MAIL_PORT = 587
+    MAIL_USE_TLS = True
+    MAIL_USE_SSL = False
     MAIL_USERNAME = 'mihailsiuhin98798@gmail.com'
     MAIL_DEFAULT_SENDER = 'mihailsiuhin98798@gmail.com'
     MAIL_PASSWORD = 'igroman000'
