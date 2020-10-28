@@ -13,4 +13,4 @@ class Config(object):
     MAIL_USE_SSL = False
     MAIL_USERNAME = 'info@pravo-z.ru'
     MAIL_DEFAULT_SENDER = 'info@pravo-z.ru'
-    MAIL_PASSWORD = 'Bagration6915831'
+    MAIL_PASSWORD = '5pJVcoRS'
