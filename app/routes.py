@@ -77,7 +77,8 @@ def new_quest():
 
 @app.route('/api/otzivi', methods=['POST'])
 def otz():
-    type_otz = request.json['type']
+    r = request.json
+    type_otz = r['type']
     if type_otz == 'all':
         otz = Otziv.query.all()
     if type_otz == 'people':
