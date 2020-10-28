@@ -100,11 +100,11 @@ def otz():
 def otz_izm():
     try:
         r = request.json
-        if r['type'] == 'DELETE':
+        if r['type_com'] == 'DELETE':
             otz = Otziv.query.filter_by(name=r['name'])
             db.session.delete(otz)
             db.session.commit()
-        if r['type'] == 'INSERT':
+        if r['type_com'] == 'INSERT':
             otz = Otziv(name=r['name'], text=r['text'],
                         name_pdf=r['pdf'], name_img=r['img'],
                         type_otz=r['type_otz'])
