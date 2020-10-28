@@ -13,4 +13,4 @@ class Config(object):
     MAIL_USE_SSL = False
     MAIL_USERNAME = 'rights.defender.krd23@gmail.com'
     MAIL_DEFAULT_SENDER = 'rights.defender.krd23@gmail.com'
-    MAIL_PASSWORD = 'ghfdjpfobnybr93'
+    MAIL_PASSWORD = 'ghfdjpfobnybr'
