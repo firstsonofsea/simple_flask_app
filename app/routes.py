@@ -45,7 +45,7 @@ def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
 @basic_auth.verify_password
 def verify_password(username, password):
     f = False
-    if username == "admin" and password == "admin":
+    if username == "admin" and password == "ml7TpTax":
         f = True
     return f
 
