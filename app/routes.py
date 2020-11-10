@@ -121,6 +121,7 @@ def otz():
     otvet = []
     for i in otz:
         otvet.append({
+            'id': i.id,
             'name': i.name,
             'text': i.text,
             'file': i.name_pdf,
