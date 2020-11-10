@@ -5,6 +5,12 @@ from app import mail
 from flask import request
 from flask import jsonify
 from flask_mail import Message
+from flask_httpauth import HTTPBasicAuth
+from flask_httpauth import HTTPTokenAuth
+
+
+basic_auth = HTTPBasicAuth()
+token_auth = HTTPTokenAuth()
 
 
 def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
@@ -34,6 +40,27 @@ def send_mail(subj, type_mes, name, text=None, phone=None, email=None):
     msg.body = text
     mail.send(msg)
     return True
+
+
+@basic_auth.verify_password
+def verify_password(username, password):
+    f = False
+    if username == "admin" and password == "admin":
+        f = True
+    return f
+
+
+@app.route('/token', methods=['GET'])
+@basic_auth.login_required
+def get_token():
+    token = 'kimetottokendlyatebya'
+    return jsonify({'token': token})
+
+
+@token_auth.verify_token
+def verify_token(token):
+    if token == 'kimetottokendlyatebya':
+        return True
 
 
 @app.route('/', methods=['GET'])
@@ -104,13 +131,8 @@ def otz():
 
 @app.route('/api/izm_otzivi', methods=['POST'])
 def otz_izm():
+    r = request.json
     try:
-        r = request.json
-        print(r)
-        if r['type_com'] == 'DELETE':
-            otz = Otziv.query.filter_by(id=r['id']).first()
-            db.session.delete(otz)
-            db.session.commit()
         if r['type_com'] == 'INSERT':
             otz = Otziv(name=r['name'], text=r['text'],
                         name_pdf=r['name_pdf'], name_img=r['name_img'],
@@ -122,3 +144,18 @@ def otz_izm():
         print(e)
         return jsonify({"status": "error",
                         "error": str(e)})
+
+
+@app.route('/api/del_otzivi', methods=['DELETE'])
+@token_auth.login_required
+def del_otz():
+    try:
+        r = request.json
+        otz = Otziv.query.filter_by(id=r['id']).first()
+        db.session.delete(otz)
+        db.session.commit()
+        return jsonify({"status": "OK"})
+    except Exception as e:
+        print(e)
+        return jsonify({"status": "error",
+                    "error": str(e)})
