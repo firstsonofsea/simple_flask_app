@@ -111,13 +111,14 @@ def new_quest():
 @app.route('/api/otzivi', methods=['POST'])
 def otz():
     r = request.json
+    status = r['status']
     type_otz = r['type_otz']
     if type_otz == 'all':
-        otz = Otziv.query.all()
+        otz = Otziv.query.filter_by(status=status).all()
     if type_otz == 'people':
-        otz = Otziv.query.filter_by(type_otz=False).all()
+        otz = Otziv.query.filter_by(type_otz=False, status=status).all()
     if type_otz == 'company':
-        otz = Otziv.query.filter_by(type_otz=True).all()
+        otz = Otziv.query.filter_by(type_otz=True, status=status).all()
     otvet = []
     for i in otz:
         otvet.append({
@@ -140,6 +141,19 @@ def otz_izm():
                         type_otz=r['type_otz'])
             db.session.add(otz)
             db.session.commit()
+        return jsonify({"status": "OK"})
+    except Exception as e:
+        print(e)
+        return jsonify({"status": "error",
+                        "error": str(e)})
+
+
+@app.route('/api/switch_otziv', methods=['POST'])
+def switch_izm():
+    r = request.json
+    try:
+        Otziv.query.filter_by(id=r['id']).first().update({'status': r['status']})
+        db.session.commit()
         return jsonify({"status": "OK"})
     except Exception as e:
         print(e)

@@ -22,3 +22,4 @@ class Otziv(db.Model):
     name_pdf = db.Column(db.String(64))
     name_img = db.Column(db.String(64))
     type_otz = db.Column(db.Boolean)
+    status = db.Column(db.Integer, default=0)
