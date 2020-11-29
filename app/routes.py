@@ -152,7 +152,7 @@ def otz_izm():
 def switch_izm():
     r = request.json
     try:
-        Otziv.query.filter_by(id=r['id']).first().update({'status': r['status']})
+        Otziv.query.filter_by(id=r['id']).update({'status': r['status']})
         db.session.commit()
         return jsonify({"status": "OK"})
     except Exception as e:
